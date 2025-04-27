@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
@@ -27,7 +27,7 @@ body {
 
 .right-section {
   flex: 1;
-  background-color: #004AAD;
+  background-color: #004aad;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,18 +39,18 @@ body {
   .app {
     flex-direction: column;
   }
-  
+
   .left-section,
   .right-section {
     flex: none;
     width: 100%;
     padding: 2rem;
   }
-  
+
   .left-section {
     min-height: 30vh;
   }
-  
+
   .right-section {
     min-height: 70vh;
   }
@@ -70,12 +70,12 @@ body {
 }
 
 .auth-modal {
-  background-color: #004AAD;
+  background-color: #004aad;
   padding: 2rem;
   border-radius: 10px;
   position: relative;
-  width: 90%;
-  max-width: 400px;
+  width: 50%;
+
   animation: modalFadeIn 0.3s ease-out;
 }
 

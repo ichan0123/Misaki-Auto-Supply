@@ -5,6 +5,8 @@ function SignupForm({ onSwitchToLogin, onSignupSuccess }) {
   const [email, setEmail] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [contactnumber, setContactnumber] = useState("");
+  const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -15,12 +17,20 @@ function SignupForm({ onSwitchToLogin, onSignupSuccess }) {
     setError("");
 
     // Basic validation
-    if (!email || !password || !firstname || !lastname) {
+    if (
+      !email ||
+      !password ||
+      !firstname ||
+      !lastname ||
+      !confirmpassword ||
+      !contactnumber ||
+      !address
+    ) {
       setError("Please fill in all fields");
       return;
     }
 
-    if (password.length < 6) {
+    if (password.length < 6 || confirmpassword.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
     }
@@ -65,15 +75,7 @@ function SignupForm({ onSwitchToLogin, onSignupSuccess }) {
       <h2>Sign up Here!</h2>
       <form onSubmit={handleSubmit}>
         {error && <div className="error-message">{error}</div>}
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+
         <div className="form-group">
           <label>First Name:</label>
           <input
@@ -90,6 +92,33 @@ function SignupForm({ onSwitchToLogin, onSignupSuccess }) {
             placeholder="Enter Last name"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Contact Number:</label>
+          <input
+            type="text"
+            placeholder="Enter the number"
+            value={contactnumber}
+            onChange={(e) => setContactnumber(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Address:</label>
+          <textarea
+            type="text"
+            placeholder="Enter the address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
