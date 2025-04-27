@@ -28,6 +28,7 @@ h2 {
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
+  grid-template-columns: 2;
 }
 
 label {

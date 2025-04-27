@@ -76,76 +76,94 @@ function SignupForm({ onSwitchToLogin, onSignupSuccess }) {
       <form onSubmit={handleSubmit}>
         {error && <div className="error-message">{error}</div>}
 
-        <div className="form-group">
-          <label>First Name:</label>
-          <input
-            type="text"
-            placeholder="Enter First name"
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Last Name:</label>
-          <input
-            type="text"
-            placeholder="Enter Last name"
-            value={lastname}
-            onChange={(e) => setLastname(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Contact Number:</label>
-          <input
-            type="text"
-            placeholder="Enter the number"
-            value={contactnumber}
-            onChange={(e) => setContactnumber(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Address:</label>
-          <textarea
-            type="text"
-            placeholder="Enter the address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Create Password:</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Confirm Password"
-            value={confirmpassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <div className="show-password">
+        <div
+          className="form-container"
+          style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}
+        >
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>First Name:</label>
             <input
-              type="checkbox"
-              id="showPassword"
-              checked={showPassword}
-              onChange={(e) => setShowPassword(e.target.checked)}
+              style={{ width: "100%" }}
+              type="text"
+              placeholder="Enter First name"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
             />
-            <label htmlFor="showPassword">Show Password</label>
+          </div>
+
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>Last Name:</label>
+            <input
+              style={{ width: "100%" }}
+              type="text"
+              placeholder="Enter Last name"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>Contact Number:</label>
+            <input
+              style={{ width: "100%" }}
+              type="text"
+              placeholder="Enter the number"
+              value={contactnumber}
+              onChange={(e) => setContactnumber(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>Address:</label>
+            <textarea
+              style={{ width: "100%" }}
+              placeholder="Enter the address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>Email:</label>
+            <input
+              style={{ width: "100%" }}
+              type="email"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group" style={{ flex: "1 1 45%" }}>
+            <label>Create Password:</label>
+            <input
+              style={{ width: "100%" }}
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              style={{ width: "100%", marginTop: "10px" }}
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm Password"
+              value={confirmpassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <div className="show-password" style={{ marginTop: "10px" }}>
+              <input
+                type="checkbox"
+                id="showPassword"
+                checked={showPassword}
+                onChange={(e) => setShowPassword(e.target.checked)}
+              />
+              <label htmlFor="showPassword" style={{ marginLeft: "5px" }}>
+                Show Password
+              </label>
+            </div>
           </div>
         </div>
+
         <button type="submit" className="signup-button">
           Sign up
         </button>
