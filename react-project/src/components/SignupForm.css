@@ -71,7 +71,7 @@ button {
 
 .signup-button {
   background-color: white;
-  color: #004AAD;
+  color: #004aad;
   font-weight: bold;
 }
 
@@ -98,4 +98,8 @@ button {
 
 .guest-link:hover {
   color: #f0f0f0;
-} 
+}
+.error-message {
+  color: lightcoral;
+  font-weight: bold;
+}
