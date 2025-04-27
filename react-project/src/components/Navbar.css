@@ -1,0 +1,215 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.navbar-logo h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #004AAD;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: 1px;
+}
+
+.navbar-logo span {
+  color: #004AAD;
+  font-style: italic;
+  font-size: 1.4rem;
+  font-family: 'Brush Script MT', cursive;
+  margin-left: 2rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 2rem;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #004AAD;
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+  background-color: #f8f9fa;
+}
+
+.search-bar input:focus {
+  background-color: #ffffff;
+}
+
+.search-button {
+  position: absolute;
+  right: 5px;
+  background: #004AAD;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 15px;
+}
+
+.search-button:hover {
+  background: #003c8a;
+}
+
+.search-button svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login-signup-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #004AAD;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.login-signup-btn:hover {
+  color: #003c8a;
+}
+
+.login-signup-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cart-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.cart-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #004AAD;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #004AAD;
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.user-email {
+  font-size: 0.95rem;
+  color: #004AAD;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-email svg {
+  width: 20px;
+  height: 20px;
+  stroke: #004AAD;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 2px solid #004AAD;
+  border-radius: 50px;
+  color: #004AAD;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #004AAD;
+  color: white;
+}
+
+.logout-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    margin: 1rem 0;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+} 
