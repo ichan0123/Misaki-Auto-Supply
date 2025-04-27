@@ -8,22 +8,22 @@ function HomePage() {
     {
       title: "NEW CAR PARTS IN STOCK",
       subtitle: "FOR TOYOTA COROLLA",
-      image: "../images/toyota_corolla.jpg"
+      image: "../src/assets/images/toyota-corolla.jpg"
     },
     {
       title: "PREMIUM AUTO PARTS",
       subtitle: "FOR HONDA CIVIC",
-      image: "/images/honda-civic.jpg"
+      image: "../src/assets/images/honda-civic.jpg"
     },
     {
       title: "QUALITY COMPONENTS",
       subtitle: "FOR NISSAN ALTIMA",
-      image: "/images/nissan-altima.jpg"
+      image: "../src/assets/images/nissan_altima.avif"
     },
     {
       title: "GENUINE PARTS",
       subtitle: "FOR MAZDA 3",
-      image: "/images/mazda3.jpg"
+      image: "../src/assets/images/mazda.avif"
     }
   ];
 
