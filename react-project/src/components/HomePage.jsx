@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './HomePage.css';
-import ProductCard from './ProductCard';
+import NewProducts from './NewProducts';
 
 function HomePage() {
+  const location = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
@@ -62,7 +64,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="menu-bar">
-        <button className="menu-item active">New Products</button>
+        <Link to="/new-products" className="menu-item">New Products</Link>
         <div className="dropdown">
           <button className="menu-item">Select Car Type ▼</button>
           <div className="dropdown-content">
@@ -72,8 +74,8 @@ function HomePage() {
             <a href="#">Mazda</a>
           </div>
         </div>
-        <button className="menu-item">Buy a set</button>
-        <button className="menu-item">Contact</button>
+        <Link to="/buy-set" className="menu-item">Buy a set</Link>
+        <Link to="/contact" className="menu-item">Contact</Link>
       </div>
 
       <div 
@@ -97,19 +99,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="featured-products">
-        <h2>Featured Products</h2>
-        <div className="product-grid">
-          {products.map(product => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              title={product.title}
-              price={product.price}
-            />
-          ))}
-        </div>
-      </div>
+      <NewProducts />
     </div>
   );
 }

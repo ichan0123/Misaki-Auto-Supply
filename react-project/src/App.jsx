@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
+import BuySet from './components/BuySet';
+import Contact from './components/Contact';
+import NewProducts from './components/NewProducts';
+import CartPopup from './components/CartPopup';
+import { CartProvider } from './context/CartContext';
 
 function App() {
   const [isLoginView, setIsLoginView] = useState(false);
@@ -29,7 +35,7 @@ function App() {
 
   const handleSignupSuccess = (userData) => {
     setUser(userData);
-    setIsLoginView(true); // Switch to login view after successful signup
+    setIsLoginView(true);
   };
 
   const handleLoginSuccess = (userData) => {
@@ -44,34 +50,46 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <Navbar 
-        onLoginClick={handleLoginClick} 
-        isAuthenticated={isAuthenticated}
-        onLogout={handleLogout}
-        user={user}
-      />
-      <HomePage />
-      
-      {showAuthModal && !isAuthenticated && (
-        <div className="auth-modal-overlay" onClick={handleCloseModal}>
-          <div className="auth-modal" onClick={e => e.stopPropagation()}>
-            <button className="close-button" onClick={handleCloseModal}>×</button>
-            {isLoginView ? (
-              <LoginForm 
-                onSwitchToSignup={handleSwitchToSignup}
-                onLoginSuccess={handleLoginSuccess}
-              />
-            ) : (
-              <SignupForm 
-                onSwitchToLogin={handleSwitchToLogin}
-                onSignupSuccess={handleSignupSuccess}
-              />
-            )}
-          </div>
+    <CartProvider>
+      <Router>
+        <div className="app">
+          <Navbar 
+            onLoginClick={handleLoginClick} 
+            isAuthenticated={isAuthenticated}
+            onLogout={handleLogout}
+            user={user}
+          />
+          
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/new-products" element={<NewProducts />} />
+            <Route path="/buy-set" element={<BuySet />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+          
+          <CartPopup />
+          
+          {showAuthModal && !isAuthenticated && (
+            <div className="auth-modal-overlay" onClick={handleCloseModal}>
+              <div className="auth-modal" onClick={e => e.stopPropagation()}>
+                <button className="close-button" onClick={handleCloseModal}>×</button>
+                {isLoginView ? (
+                  <LoginForm 
+                    onSwitchToSignup={handleSwitchToSignup}
+                    onLoginSuccess={handleLoginSuccess}
+                  />
+                ) : (
+                  <SignupForm 
+                    onSwitchToLogin={handleSwitchToLogin}
+                    onSignupSuccess={handleSignupSuccess}
+                  />
+                )}
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </Router>
+    </CartProvider>
   );
 }
 
