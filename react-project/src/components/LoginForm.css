@@ -1,15 +1,16 @@
 .login-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
+  margin: 0 auto;
   color: white;
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem 1rem;
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 1.5rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
   background-color: #e0e0e0;
   border-radius: 50%;
   overflow: hidden;
@@ -23,14 +24,17 @@
 }
 
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
 .form-group {
   margin-bottom: 1.5rem;
   text-align: left;
+  color: white;
+
+
 }
 
 label {
@@ -38,6 +42,7 @@ label {
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
+
 }
 
 input[type="email"],
@@ -120,4 +125,4 @@ button {
 .guest-link:hover {
   color: #f0f0f0;
   transform: translateY(-1px);
-} 
+}

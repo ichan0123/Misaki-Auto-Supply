@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './HomePage.css';
 import NewProducts from './NewProducts';
+import Contact from './Contact';
+import BuySet from './BuySet';
 
 function HomePage() {
   const location = useLocation();
@@ -100,6 +102,8 @@ function HomePage() {
       </div>
 
       <NewProducts />
+      <BuySet />
+      <Contact />
     </div>
   );
 }

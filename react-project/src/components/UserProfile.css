@@ -1,0 +1,102 @@
+.user-profile-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.user-profile-header h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.logout-button {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.logout-icon {
+  margin-left: 8px;
+}
+
+.user-profile-content {
+  display: flex;
+  gap: 20px;
+}
+
+.user-profile-sidebar {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-button {
+  padding: 15px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+  margin-bottom: 5px;
+}
+
+.sidebar-button.active {
+  background-color: #f0f0f0;
+  border-left: 3px solid #004AAD;
+  font-weight: bold;
+}
+
+.sidebar-button:hover:not(.active) {
+  background-color: #f8f8f8;
+}
+
+.delete-profile-button {
+  background-color: #ff4d4f;
+  color: white;
+  margin-top: auto;
+  border-radius: 4px;
+}
+
+.delete-profile-button:hover {
+  background-color: #ff7875;
+}
+
+.user-profile-main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .user-profile-content {
+    flex-direction: column;
+  }
+  
+  .user-profile-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
@@ -11,6 +11,7 @@ import NewProducts from './components/NewProducts';
 import CheckoutPage from './components/CheckoutPage';
 import CartPopup from './components/CartPopup';
 import ShippingPaymentPage from './components/ShippingPaymentPage';
+import UserProfile from './components/UserProfile';
 import { CartProvider } from './context/CartContext';
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/shipping-payment" element={<ShippingPaymentPage />} />
+            <Route 
+              path="/profile" 
+              element={isAuthenticated ? <UserProfile user={user} onLogout={handleLogout} /> : <Navigate to="/" />} 
+            />
           </Routes>
           
           <CartPopup />
