@@ -1,15 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartSidebar from './CartSidebar';
 import './Navbar.css';
 
+// Mock data for products
+const products = [
+  {
+    id: 1,
+    title: 'Road Fit Pipe',
+    price: 580.00,
+    image: '/road-fit-pipe.jpg'
+  },
+  {
+    id: 2,
+    title: 'Vortex Exhaust Bent Pipe',
+    price: 680.00,
+    image: '/vortex-exhaust.jpg'
+  },
+  {
+    id: 3,
+    title: 'MagnaFlow Performance Exhaust Tailpipe 15395',
+    price: 700.00,
+    image: '/magnaflow-exhaust.jpg'
+  },
+  {
+    id: 4,
+    title: 'HKS Universal Car Exhaust Muffler Pipe',
+    price: 800.00,
+    image: '/hks-exhaust.jpg'
+  },
+  {
+    id: 5,
+    title: 'Newest Style 304 Stainless Steel',
+    price: 900.00,
+    image: '/stainless-steel.jpg'
+  }
+];
+
 function Navbar({ onLoginClick, isAuthenticated, onLogout, user }) {
   const { getCartCount } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showResults, setShowResults] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const searchRef = useRef(null);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value.trim() === '') {
+      setShowResults(false);
+      setFilteredProducts([]);
+      return;
+    }
+
+    // Filter products based on search term
+    const filtered = products.filter(product =>
+      product.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setFilteredProducts(filtered);
+    setShowResults(true);
   };
 
   return (
@@ -20,16 +88,32 @@ function Navbar({ onLoginClick, isAuthenticated, onLogout, user }) {
           <span>Auto Supply</span>
         </Link>
         
-        <div className="search-bar">
+        <div className="search-bar" ref={searchRef}>
           <input 
             type="text" 
             placeholder="Search Vehicle Parts"
+            value={searchTerm}
+            onChange={handleSearch}
           />
           <button className="search-button">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
+          
+          {showResults && filteredProducts.length > 0 && (
+            <div className="search-results">
+              {filteredProducts.map(product => (
+                <div key={product.id} className="search-result-item">
+                  <img src={product.image} alt={product.title} className="result-image" />
+                  <div className="result-details">
+                    <h3>{product.title}</h3>
+                    <p className="result-price">₱ {product.price.toFixed(2)}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="navbar-actions">
