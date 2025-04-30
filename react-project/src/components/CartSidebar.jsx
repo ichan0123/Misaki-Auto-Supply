@@ -1,11 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './CartSidebar.css';
 
 function CartSidebar({ isOpen, onClose }) {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
+
+  const handleCheckout = () => {
+    onClose();
+    navigate('/checkout');
+  };
 
   return (
     <>
@@ -66,7 +73,9 @@ function CartSidebar({ isOpen, onClose }) {
               <span>Total:</span>
               <span>₱ {getCartTotal().toFixed(2)}</span>
             </div>
-            <button className="checkout-btn">Checkout</button>
+            <button className="checkout-btn" onClick={handleCheckout}>
+              Checkout
+            </button>
             <button className="continue-shopping-btn" onClick={onClose}>
               Continue Shopping
             </button>

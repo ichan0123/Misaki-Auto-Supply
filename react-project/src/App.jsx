@@ -8,7 +8,9 @@ import HomePage from './components/HomePage';
 import BuySet from './components/BuySet';
 import Contact from './components/Contact';
 import NewProducts from './components/NewProducts';
+import CheckoutPage from './components/CheckoutPage';
 import CartPopup from './components/CartPopup';
+import ShippingPaymentPage from './components/ShippingPaymentPage';
 import { CartProvider } from './context/CartContext';
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
             <Route path="/new-products" element={<NewProducts />} />
             <Route path="/buy-set" element={<BuySet />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/shipping-payment" element={<ShippingPaymentPage />} />
           </Routes>
           
           <CartPopup />
