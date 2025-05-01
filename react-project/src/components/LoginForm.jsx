@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
@@ -6,6 +7,17 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  // Check if admin is already logged in
+  useEffect(() => {
+    const adminData = localStorage.getItem('adminData');
+    if (adminData) {
+      setIsAdminLoggedIn(true);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +29,29 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
       return;
     }
 
+    // Admin login check
+    if (isAdminLogin) {
+      // In a real app, this would be an API call to authenticate admin
+      if (email === "admin@misaki.com" && password === "admin123") {
+        const adminData = {
+          email,
+          id: "admin-1",
+          isAdmin: true,
+        };
+        
+        // Store admin data in localStorage
+        localStorage.setItem('adminData', JSON.stringify(adminData));
+        
+        // Redirect to admin dashboard
+        navigate('/admin');
+        return;
+      } else {
+        setError("Invalid admin credentials");
+        return;
+      }
+    }
+
+    // Regular user login
     // Here you would typically make an API call to authenticate the user
     // For now, we'll simulate a successful login
     const userData = {
@@ -33,9 +68,9 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
     }, 500);
   };
 
-  const handleGuestOrder = (e) => {
-    e.preventDefault();
-    // Handle guest order logic here
+  const toggleAdminLogin = () => {
+    setIsAdminLogin(!isAdminLogin);
+    setError("");
   };
 
   return (
@@ -44,19 +79,19 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
         <svg
           viewBox="0 0 24 24"
           fill="currentColor"
-          style={{ color: "#004AAD" }}
+          style={{ color: isAdminLogin ? "#FF4500" : "#004AAD" }}
         >
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
         </svg>
       </div>
-      <h2>Login</h2>
+      <h2>{isAdminLogin ? "Admin Login" : "User Login"}</h2>
       <form onSubmit={handleSubmit}>
         {error && <div className="error-message">{error}</div>}
         <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
-            placeholder="Enter Email"
+            placeholder={isAdminLogin ? "Admin Email" : "Enter Email"}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -65,7 +100,7 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
           <label>Password:</label>
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="Enter Password"
+            placeholder={isAdminLogin ? "Admin Password" : "Enter Password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -80,18 +115,26 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
           </div>
         </div>
         <button type="submit" className="login-submit-button">
-          Log in
+          {isAdminLogin ? "Admin Login" : "User Login"}
         </button>
-        <button
-          type="button"
-          className="signup-switch-button"
-          onClick={onSwitchToSignup}
-        >
-          Sign up instead
-        </button>
-        <a href="#" className="guest-link" onClick={handleGuestOrder}>
-          Order as Guest
-        </a>
+        {!isAdminLogin && (
+          <button
+            type="button"
+            className="signup-switch-button"
+            onClick={onSwitchToSignup}
+          >
+            Sign up instead
+          </button>
+        )}
+        {!isAdminLoggedIn && (
+          <button 
+            type="button" 
+            className="admin-toggle-button"
+            onClick={toggleAdminLogin}
+          >
+            {isAdminLogin ? "Switch to User Login" : "Switch to Admin Login"}
+          </button>
+        )}
       </form>
     </div>
   );

@@ -8,6 +8,8 @@ import BuySet from './BuySet';
 function HomePage() {
   const location = useLocation();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeCarType, setActiveCarType] = useState(null);
+  
   const slides = [
     {
       title: "NEW CAR PARTS IN STOCK",
@@ -30,6 +32,41 @@ function HomePage() {
       image: "../src/assets/images/mazda.avif"
     }
   ];
+
+  const carModels = {
+    sedan: {
+      title: "Sedan",
+      image: "../src/assets/images/sedan.jpg",
+      models: [
+        { brand: "Toyota", model: "Toyota Corolla 7th Gen" },
+        { brand: "Toyota", model: "Toyota Crown 12th Gen" },
+        { brand: "Kia", model: "Kia Pride (2000)" },
+        { brand: "Mitsubishi", model: "Mitsubishi Galant 8th Gen" },
+        { brand: "Honda", model: "Honda Civic 7th Gen" },
+        { brand: "Mitsubishi", model: "Mitsubishi Lancer 7th Gen" }
+      ]
+    },
+    mpv: {
+      title: "MPV",
+      image: "../src/assets/images/mpv.jpg",
+      models: [
+        { brand: "Toyota", model: "Toyota Innova" },
+        { brand: "Honda", model: "Honda Odyssey" },
+        { brand: "Nissan", model: "Nissan Serena" },
+        { brand: "Mazda", model: "Mazda 5" }
+      ]
+    },
+    van: {
+      title: "Van",
+      image: "../src/assets/images/van.jpg",
+      models: [
+        { brand: "Toyota", model: "Toyota HiAce" },
+        { brand: "Nissan", model: "Nissan NV350" },
+        { brand: "Hyundai", model: "Hyundai Starex" },
+        { brand: "Ford", model: "Ford Transit" }
+      ]
+    }
+  };
 
   const products = [
     {
@@ -63,17 +100,57 @@ function HomePage() {
     setCurrentSlide(index);
   };
 
+  const handleCarTypeHover = (carType) => {
+    setActiveCarType(carType);
+  };
+
+  const handleCarTypeLeave = () => {
+    setActiveCarType(null);
+  };
+
   return (
     <div className="home-page">
       <div className="menu-bar">
         <Link to="/new-products" className="menu-item">New Products</Link>
-        <div className="dropdown">
+        <div className="dropdown" onMouseLeave={handleCarTypeLeave}>
           <button className="menu-item">Select Car Type ▼</button>
-          <div className="dropdown-content">
-            <a href="#">Toyota</a>
-            <a href="#">Honda</a>
-            <a href="#">Nissan</a>
-            <a href="#">Mazda</a>
+          <div className="dropdown-content car-type-dropdown">
+            <div className="car-types">
+              <div 
+                className={`car-type-item ${activeCarType === 'sedan' ? 'active' : ''}`}
+                onMouseEnter={() => handleCarTypeHover('sedan')}
+              >
+                <img src={carModels.sedan.image} alt="Sedan" className="car-type-image" />
+                <span>Sedan ▶</span>
+              </div>
+              <div 
+                className={`car-type-item ${activeCarType === 'mpv' ? 'active' : ''}`}
+                onMouseEnter={() => handleCarTypeHover('mpv')}
+              >
+                <img src={carModels.mpv.image} alt="MPV" className="car-type-image" />
+                <span>MPV ▶</span>
+              </div>
+              <div 
+                className={`car-type-item ${activeCarType === 'van' ? 'active' : ''}`}
+                onMouseEnter={() => handleCarTypeHover('van')}
+              >
+                <img src={carModels.van.image} alt="Van" className="car-type-image" />
+                <span>Van ▶</span>
+              </div>
+            </div>
+            
+            {activeCarType && (
+              <div className="car-models-dropdown">
+                <h3>{carModels[activeCarType].title} Models</h3>
+                <div className="car-models-list">
+                  {carModels[activeCarType].models.map((model, index) => (
+                    <Link to={`/car-parts/${model.brand.toLowerCase()}/${model.model.replace(/\s+/g, '-').toLowerCase()}`} key={index} className="car-model-item">
+                      {model.model}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <Link to="/buy-set" className="menu-item">Buy a set</Link>
@@ -108,4 +185,4 @@ function HomePage() {
   );
 }
 
-export default HomePage; 
+export default HomePage;

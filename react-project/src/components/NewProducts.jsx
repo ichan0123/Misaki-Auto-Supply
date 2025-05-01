@@ -4,7 +4,6 @@ import { useCart } from "../context/CartContext";
 
 function NewProducts() {
   const { addToCart } = useCart();
-
   const products = [
     {
       id: 1,
