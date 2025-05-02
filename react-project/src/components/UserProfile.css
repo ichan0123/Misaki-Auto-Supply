@@ -72,13 +72,13 @@
 
 .delete-profile-button {
   background-color: #ff4d4f;
-  color: white;
+  color: black;
   margin-top: auto;
   border-radius: 4px;
 }
 
 .delete-profile-button:hover {
-  background-color: #ff7875;
+  background-color: #ff7875 !important;
 }
 
 .user-profile-main {

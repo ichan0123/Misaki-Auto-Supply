@@ -1,0 +1,130 @@
+.interactive-car-map {
+  margin: 40px 0;
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.interactive-car-map h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.interactive-car-map p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.car-map-container {
+  position: relative;
+  max-width: 1000px;
+  height: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hotspot-dot {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 0, 0, 0.7);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 rgba(255, 0, 0, 0.4);
+  animation: pulse 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.hotspot:hover .hotspot-dot {
+  background-color: rgba(255, 0, 0, 1);
+  transform: scale(1.2);
+}
+
+.hotspot.active .hotspot-dot {
+  background-color: rgba(255, 0, 0, 1);
+  transform: scale(1.2);
+}
+
+.hotspot-tooltip {
+  position: absolute;
+  width: 220px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  text-align: left;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  border-left: 4px solid #1a56db;
+}
+
+/* Position tooltips based on hotspot location */
+.hotspot[style*="left: 75%"] .hotspot-tooltip,
+.hotspot[style*="left: 80%"] .hotspot-tooltip,
+.hotspot[style*="left: 85%"] .hotspot-tooltip {
+  right: 0;
+  transform: translate(-100%, 10px);
+}
+
+.hotspot[style*="top: 75%"] .hotspot-tooltip,
+.hotspot[style*="top: 80%"] .hotspot-tooltip,
+.hotspot[style*="top: 85%"] .hotspot-tooltip {
+  bottom: 30px;
+  transform: translateY(-100%);
+}
+
+.hotspot-tooltip h3 {
+  margin: 0 0 5px;
+  color: #1a56db;
+  font-size: 16px;
+}
+
+.hotspot-tooltip p {
+  margin: 0 0 8px;
+  color: #555;
+  font-size: 13px;
+}
+
+.view-parts {
+  display: inline-block;
+  color: #1a56db;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 5px 0;
+  border-top: 1px solid #eee;
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Pulse animation for hotspots */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+  }
+}

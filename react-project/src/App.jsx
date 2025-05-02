@@ -117,6 +117,9 @@ function App() {
                     element={isAuthenticated ? <UserProfile user={user} onLogout={handleLogout} /> : <Navigate to="/" />} 
                   />
                   <Route path="/car-parts/:brand/:model" element={<CarModelProducts />} />
+                  <Route path="/category/:categoryName" element={<CarModelProducts />} />
+                  <Route path="/brand/:brandName" element={<CarModelProducts />} />
+                  <Route path="/product/:productId" element={<CarModelProducts />} />
                 </Routes>
               </Layout>
             } />

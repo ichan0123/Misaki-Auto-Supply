@@ -4,6 +4,8 @@ import './HomePage.css';
 import NewProducts from './NewProducts';
 import Contact from './Contact';
 import BuySet from './BuySet';
+import InteractiveCarMap from './InteractiveCarMap';
+import Footer from './Footer';
 
 function HomePage() {
   const location = useLocation();
@@ -178,9 +180,12 @@ function HomePage() {
         </div>
       </div>
 
+      <InteractiveCarMap carModel="Toyota Corolla 7th Gen" />
+      
       <NewProducts />
       <BuySet />
       <Contact />
+      <Footer />
     </div>
   );
 }
