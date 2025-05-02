@@ -46,8 +46,8 @@ const Footer = () => {
 
         <div className="footer-section">
           <h3>Contact Info</h3>
-          <p><i className="fas fa-map-marker-alt"></i> 123 Auto Parts Street, Tokyo, Japan</p>
-          <p><i className="fas fa-phone"></i> +81 123-456-7890</p>
+          <p><i className="fas fa-map-marker-alt"></i> Del Pilar, San Fernando, Pampanga</p>
+          <p><i className="fas fa-phone"></i> 09182246101</p>
           <p><i className="fas fa-envelope"></i> info@misakiautosupply.com</p>
         </div>
       </div>

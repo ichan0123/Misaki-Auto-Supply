@@ -97,7 +97,7 @@ function App() {
       <Router>
         <div className="app">
           <Routes>
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/*" element={<AdminDashboard />} />
             <Route path="/*" element={
               <Layout 
                 isAuthenticated={isAuthenticated} 
