@@ -13,6 +13,7 @@ import CartPopup from './components/CartPopup';
 import ShippingPaymentPage from './components/ShippingPaymentPage';
 import UserProfile from './components/UserProfile';
 import CarModelProducts from './components/CarModelProducts';
+import ProductDetail from './components/ProductDetail';
 import AdminDashboard from './components/AdminDashboard';
 import { CartProvider } from './context/CartContext';
 
@@ -119,7 +120,7 @@ function App() {
                   <Route path="/car-parts/:brand/:model" element={<CarModelProducts />} />
                   <Route path="/category/:categoryName" element={<CarModelProducts />} />
                   <Route path="/brand/:brandName" element={<CarModelProducts />} />
-                  <Route path="/product/:productId" element={<CarModelProducts />} />
+                  <Route path="/product/:productId" element={<ProductDetail />} />
                 </Routes>
               </Layout>
             } />

@@ -154,6 +154,20 @@
   background: #003c8a;
 }
 
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+}
+
+.product-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media (max-width: 1200px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);

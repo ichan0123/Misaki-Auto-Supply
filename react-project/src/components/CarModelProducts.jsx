@@ -567,23 +567,25 @@ function CarModelProducts() {
                 <div className="products-grid">
                   {products.map((product) => (
                     <div key={product.id} className="product-item">
-                      <div className="product-image">
-                        <img 
-                          src={product.image} 
-                          alt={product.title} 
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "../src/assets/images/Dual-pipe.jpg";
-                          }}
-                          loading="lazy"
-                        />
-                        <span className="product-category">{product.category}</span>
-                      </div>
-                      <h3 className="product-title">{product.title}</h3>
-                      {(isCategory || isBrand) && product.brand && product.model && (
-                        <div className="product-model">For {product.brand} {product.model}</div>
-                      )}
-                      <div className="product-price">₱ {product.price.toFixed(2)}</div>
+                      <Link to={`/product/${product.id}`} className="product-link">
+                        <div className="product-image">
+                          <img 
+                            src={product.image} 
+                            alt={product.title} 
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = "../src/assets/images/Dual-pipe.jpg";
+                            }}
+                            loading="lazy"
+                          />
+                          <span className="product-category">{product.category}</span>
+                        </div>
+                        <h3 className="product-title">{product.title}</h3>
+                        {(isCategory || isBrand) && product.brand && product.model && (
+                          <div className="product-model">For {product.brand} {product.model}</div>
+                        )}
+                        <div className="product-price">₱ {product.price.toFixed(2)}</div>
+                      </Link>
                       <button
                         className="add-to-cart-btn"
                         onClick={() => handleAddToCart(product)}

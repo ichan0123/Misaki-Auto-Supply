@@ -57,7 +57,7 @@ const AdminDashboard = () => {
         </div>
         <nav className="sidebar-nav">
           <ul>
-            <li className="active">
+            <li>
               <Link to="/admin">
                 <span className="icon">🏠</span>
                 Homepage

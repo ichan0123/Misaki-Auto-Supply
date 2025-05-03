@@ -204,7 +204,7 @@ tbody tr:hover {
   width: 100%;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: white !important;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -213,7 +213,7 @@ tbody tr:hover {
 }
 
 .logout-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .admin-header {
@@ -461,22 +461,25 @@ tbody tr:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
-.modal {
+.modal, .modal-content {
   background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  width: 500px;
+  border-radius: 12px;
+  padding: 24px;
+  width: 600px;
   max-width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.3s ease-out;
 }
 
 .modal-header {
@@ -484,29 +487,157 @@ tbody tr:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
 }
 
 .modal-header h3 {
   margin: 0;
   color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.close-btn {
+.close-btn, .close-button {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   color: #666;
+  text-align: right;
+  transition: color 0.2s, transform 0.2s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-.close-btn:hover {
+.close-btn:hover, .close-button:hover {
   color: #333;
+  background-color: #f0f0f0;
+  transform: scale(1.1);
 }
 
 .modal-body {
   margin-bottom: 20px;
+  color: #444;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Customer Details Styles */
+.customer-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.customer-info, .customer-stats {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.customer-info p, .customer-stats p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.customer-info strong, .customer-stats strong {
+  display: inline-block;
+  width: 120px;
+  color: #555;
+  font-weight: 600;
+}
+
+.customer-stats h4, .status-update h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #004AAD;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.status-update {
+  grid-column: span 2;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.status-update select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+}
+
+.update-status-button {
+  background-color: #004AAD;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.update-status-button:hover {
+  background-color: #003c8a;
+}
+
+.form-actions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.form-actions .close-button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-actions .close-button:hover {
+  background-color: #e0e0e0;
 }
 
 .modal-footer {

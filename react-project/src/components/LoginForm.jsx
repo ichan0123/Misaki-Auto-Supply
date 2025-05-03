@@ -43,6 +43,7 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
         localStorage.setItem('adminData', JSON.stringify(adminData));
         
         // Redirect to admin dashboard
+        onLoginSuccess();
         navigate('/admin');
         return;
       } else {

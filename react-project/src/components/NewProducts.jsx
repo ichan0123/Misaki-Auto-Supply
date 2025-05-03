@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./NewProducts.css";
 import { useCart } from "../context/CartContext";
 
@@ -123,12 +124,14 @@ function NewProducts() {
       <div className="products-grid">
         {products.map((product) => (
           <div key={product.id} className="product-item">
-            <div className="product-image">
-              <img src={product.image} alt={product.title} />
-              <span className="product-category">{product.category}</span>
-            </div>
-            <h3 className="product-title">{product.title}</h3>
-            <div className="product-price">₱ {product.price.toFixed(2)}</div>
+            <Link to={`/product/${product.id}`} className="product-link">
+              <div className="product-image">
+                <img src={product.image} alt={product.title} />
+                <span className="product-category">{product.category}</span>
+              </div>
+              <h3 className="product-title">{product.title}</h3>
+              <div className="product-price">₱ {product.price.toFixed(2)}</div>
+            </Link>
             <button
               className="add-to-cart-btn"
               onClick={() => handleAddToCart(product)}
