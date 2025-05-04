@@ -232,29 +232,32 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.6rem 1.2rem;
-  background: white;
+  background: #004aad !important;
   border: 1px solid #004aad !important;
   border-radius: 50px;
-  color: #004aad !important;
   font-size: 0.9rem;
   font-weight: 600;
+  color: white !important; /* Ensure text is visible */
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logout-btn:hover {
-  background: #cacaca !important;
-  border-color: #004aad !important;
+  background: #003c8a !important; /* Darker shade of blue for hover */
+  border-color: #003c8a !important; /* Match the hover background */
+  color: #004aad !important; /* Keep text color consistent */
 }
-
 .logout-btn svg {
   width: 18px;
   height: 18px;
-  stroke: #004aad;
+  stroke: white !important; /* Ensure the icon matches the text color */
   stroke-width: 2;
+  transition: stroke 0.3s ease; /* Smooth transition for hover */
 }
-
+.logout-btn:hover svg {
+  stroke: #004aad !important; /* Keep the icon white on hover */
+}
 @media (max-width: 1024px) {
   .navbar {
     padding: 1rem 2rem;

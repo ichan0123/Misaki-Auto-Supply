@@ -45,11 +45,25 @@ function App() {
   const [user, setUser] = useState(null);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
 
-  // Check if admin is logged in
+  // Check if admin or user is logged in on app initialization
   useEffect(() => {
+    // Check for admin login
     const adminData = localStorage.getItem('adminData');
     if (adminData) {
       setIsAdminLoggedIn(true);
+    }
+    
+    // Check for user login
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      try {
+        const parsedUserData = JSON.parse(userData);
+        setUser(parsedUserData);
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        localStorage.removeItem('userData');
+      }
     }
   }, []);
 
@@ -88,7 +102,8 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    // Also clear admin data if present
+    // Clear both user and admin data from localStorage
+    localStorage.removeItem('userData');
     localStorage.removeItem('adminData');
     setIsAdminLoggedIn(false);
   };

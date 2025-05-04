@@ -43,6 +43,7 @@
   cursor: pointer;
   color: #666;
   padding: 0.5rem;
+  text-align: right;
 }
 
 .cart-items {

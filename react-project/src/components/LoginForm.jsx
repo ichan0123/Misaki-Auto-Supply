@@ -60,6 +60,9 @@ function LoginForm({ onSwitchToSignup, onLoginSuccess }) {
       id: Date.now(), // Simulated user ID
     };
 
+    // Store user data in localStorage for persistence
+    localStorage.setItem('userData', JSON.stringify(userData));
+
     // Simulate API call
     setTimeout(() => {
       onLoginSuccess(userData);

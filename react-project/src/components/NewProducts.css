@@ -130,11 +130,15 @@
 }
 
 .product-price {
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   color: #E53935;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
+  background-color: rgba(229, 57, 53, 0.08);
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 1rem 1rem;
 }
 
 .add-to-cart-btn {

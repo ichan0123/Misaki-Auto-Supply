@@ -22,7 +22,7 @@
 
 .info-section {
   flex: 1;
-  background-color: #0046BE;
+  background-color: #0046be !important;
   color: white;
   padding: 4rem 2rem 2rem;
   border-radius: 8px;
@@ -43,11 +43,13 @@
 
 .customer-info {
   margin-bottom: 2rem;
+  background-color: #0046be !important;
 }
 
 .customer-info p {
   margin: 0.5rem 0;
   font-size: 0.9rem;
+  color: white;
 }
 
 .shipping-options,
@@ -84,7 +86,7 @@
 
 .shipping-method.selected,
 .payment-method.selected {
-  border: 2px solid #4CAF50;
+  border: 2px solid #4caf50;
 }
 
 .shipping-method small {
@@ -109,7 +111,7 @@
   background-color: white;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .order-summary h2 {
@@ -136,7 +138,7 @@
 }
 
 .item-price {
-  color: #E53935;
+  color: #e53935;
   margin: 0;
   font-weight: bold;
 }
@@ -158,7 +160,7 @@
   width: 100%;
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #0046BE;
+  background-color: #0046be;
   color: white;
   border: none;
   border-radius: 4px;
@@ -169,4 +171,4 @@
 .confirm-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-} 
+}
