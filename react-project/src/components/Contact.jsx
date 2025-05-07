@@ -1,10 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './Contact.css';
 
 const Contact = () => {
+  const navigate = useNavigate();
+  
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="contact-page">
-      <h1 className="contact-title">Contact</h1>
+      <div className="page-header-with-back">
+        <button className="back-btn" onClick={goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Back
+        </button>
+        <h1 className="contact-title">Contact</h1>
+      </div>
       
       <div className="contact-content">
         <div className="contact-left">

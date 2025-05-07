@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../components/AdminDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashAlt, faPlus, faSearch, faExclamationTriangle, faImage, faTag, faDollarSign, faBoxOpen, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faPlus, faSearch, faExclamationTriangle, faImage, faTag, faDollarSign, faBoxOpen, faCheckCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const AdminProducts = () => {
   // State for filtering and searching
@@ -9,6 +9,7 @@ const AdminProducts = () => {
   const [categoryFilter, setCategoryFilter] = useState('all');
   const [successMessage, setSuccessMessage] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showAddProductForm, setShowAddProductForm] = useState(false);
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -68,7 +69,8 @@ const AdminProducts = () => {
   // Product handlers
   const handleAddProduct = () => {
     setCurrentProduct(null);
-    setIsModalOpen(true);
+    setShowAddProductForm(!showAddProductForm);
+    setIsModalOpen(false);
   };
 
   const handleEditProduct = (product) => {
@@ -102,6 +104,7 @@ const AdminProducts = () => {
         product.id === currentProduct.id ? { ...product, ...processedData } : product
       ));
       showSuccess('Product updated successfully');
+      setIsModalOpen(false);
     } else {
       // Add new product
       const newProduct = {
@@ -110,8 +113,8 @@ const AdminProducts = () => {
       };
       setProducts([...products, newProduct]);
       showSuccess('Product added successfully');
+      setShowAddProductForm(false);
     }
-    setIsModalOpen(false);
   };
 
   // Modal Component
@@ -312,7 +315,8 @@ const AdminProducts = () => {
       <div className="section-header">
         <h2>Product Management</h2>
         <button className="add-btn" onClick={handleAddProduct}>
-          <FontAwesomeIcon icon={faPlus} /> Add New Product
+          <FontAwesomeIcon icon={showAddProductForm ? faTrashAlt : faPlus} /> 
+          {showAddProductForm ? 'Cancel' : 'Add New Product'}
         </button>
       </div>
       
@@ -320,6 +324,23 @@ const AdminProducts = () => {
       {showSuccessMessage && (
         <div className="success-message">
           <FontAwesomeIcon icon={faCheckCircle} /> {successMessage}
+        </div>
+      )}
+      
+      {/* Add Product Form */}
+      {showAddProductForm && (
+        <div className="add-product-section">
+          <div className="section-header-with-back">
+            <button className="back-btn" onClick={() => setShowAddProductForm(false)}>
+              <FontAwesomeIcon icon={faArrowLeft} /> Back
+            </button>
+            <h3>Add New Product</h3>
+          </div>
+          <ProductForm 
+            product={{}} 
+            onSubmit={handleProductSubmit} 
+            onCancel={() => setShowAddProductForm(false)} 
+          />
         </div>
       )}
       
@@ -408,11 +429,11 @@ const AdminProducts = () => {
         </table>
       </div>
       
-      {/* Product Modal */}
+      {/* Product Edit Modal (only for editing, not for adding) */}
       <Modal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-        title={currentProduct ? `Edit Product: ${currentProduct.name}` : 'Add New Product'}
+        title={currentProduct ? `Edit Product: ${currentProduct.name}` : ''}
       >
         <ProductForm 
           product={currentProduct} 

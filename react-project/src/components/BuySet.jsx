@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './BuySet.css';
 
 const BuySet = () => {
@@ -117,9 +119,18 @@ const BuySet = () => {
     }
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="buy-set-page">
-      <h1 className="page-title">Available Car Sets</h1>
+      <div className="page-header-with-back">
+        <button className="back-btn" onClick={goBack}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Back
+        </button>
+        <h1 className="page-title">Available Car Sets</h1>
+      </div>
       <div className="car-sets-grid">
         {carSets.map((set) => (
           <div key={set.id} className="car-set-card">
