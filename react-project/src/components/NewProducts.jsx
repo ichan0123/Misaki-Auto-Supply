@@ -1,10 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./NewProducts.css";
 import { useCart } from "../context/CartContext";
 
-function NewProducts() {
+function NewProducts({ hideBackButton }) {
+  // If hideBackButton prop is not provided, determine if we're on the homepage
+  const location = useLocation();
+  const isHomePage = !hideBackButton ? location.pathname === '/' : hideBackButton;
   const { addToCart } = useCart();
+  const navigate = useNavigate();
+  
+  const goBack = () => {
+    navigate(-1);
+  };
   const products = [
     {
       id: 1,
@@ -119,7 +129,14 @@ function NewProducts() {
 
   return (
     <div className="new-products">
-      <h2>New Products</h2>
+      <div className="page-header-with-back">
+        {!isHomePage && (
+          <button className="back-btn" onClick={goBack}>
+            <FontAwesomeIcon icon={faArrowLeft} /> Back
+          </button>
+        )}
+        <h2>New Products</h2>
+      </div>
 
       <div className="products-grid">
         {products.map((product) => (

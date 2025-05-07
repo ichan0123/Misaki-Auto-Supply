@@ -182,9 +182,9 @@ function HomePage() {
 
       <InteractiveCarMap carModel="Toyota Corolla 7th Gen" />
       
-      <NewProducts />
-      <BuySet />
-      <Contact />
+      <NewProducts hideBackButton={true} />
+      <BuySet hideBackButton={true} />
+      <Contact hideBackButton={true} />
       <Footer />
     </div>
   );

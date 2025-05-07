@@ -5,14 +5,43 @@
   background-color: #f8f9fa;
 }
 
+/* Page Header with Back Button */
+.page-header-with-back {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
 .new-products h2 {
   font-size: 2.5rem;
   color: #004AAD;
-  margin-bottom: 2rem;
-  text-align: center;
+  margin: 0;
+  flex-grow: 1;
   font-weight: bold;
   position: relative;
   padding-bottom: 1rem;
+  text-align: center;
+}
+
+/* Back Button */
+.back-btn {
+  background-color: #004AAD !important;
+  color: white !important;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  margin-left: 20px;
+  transition: background-color 0.2s;
+  width: 10%;
+}
+
+.back-btn:hover {
+  background-color: #003c8a !important;
 }
 
 .new-products h2:after {

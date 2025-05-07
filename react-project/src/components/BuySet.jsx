@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './BuySet.css';
 
-const BuySet = () => {
+const BuySet = ({ hideBackButton }) => {
+  // If hideBackButton prop is not provided, determine if we're on the homepage
+  const location = useLocation();
+  const isHomePage = !hideBackButton ? location.pathname === '/' : hideBackButton;
   const [expandedSetId, setExpandedSetId] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -126,9 +129,11 @@ const BuySet = () => {
   return (
     <div className="buy-set-page">
       <div className="page-header-with-back">
-        <button className="back-btn" onClick={goBack}>
-          <FontAwesomeIcon icon={faArrowLeft} /> Back
-        </button>
+        {!isHomePage && (
+          <button className="back-btn" onClick={goBack}>
+            <FontAwesomeIcon icon={faArrowLeft} /> Back
+          </button>
+        )}
         <h1 className="page-title">Available Car Sets</h1>
       </div>
       <div className="car-sets-grid">

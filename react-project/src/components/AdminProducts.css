@@ -114,13 +114,14 @@ AdminProducts.css
 /* Add Product Button */
 .add-btn {
   background-color: #004AAD;
+  width: 15%  ;
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items:flex-end;
   gap: 5px;
   transition: background-color 0.3s;
 }

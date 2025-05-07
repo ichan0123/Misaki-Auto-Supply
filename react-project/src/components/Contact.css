@@ -13,10 +13,12 @@
 
 .contact-title {
   font-size: 2.5rem;
-  color: #000;
-  margin: 0;
+  color: #004AAD;
+  margin-left: auto;
+  margin-right: 180px;
   flex-grow: 1;
   font-weight: bold;
+  text-align: center;
 }
 
 /* Back Button */
