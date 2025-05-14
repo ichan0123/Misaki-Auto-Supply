@@ -22,13 +22,14 @@
 .interactive-car-map h2 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: #004AAD;
+  color: #004aad;
   text-align: left;
   margin: 0;
 }
 
-.toggle-hotspots-btn, .toggle-view-btn {
-  background-color: #004AAD;
+.toggle-hotspots-btn,
+.toggle-view-btn {
+  background-color: #004aad;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -38,7 +39,8 @@
   transition: background-color 0.2s;
 }
 
-.toggle-hotspots-btn:hover, .toggle-view-btn:hover {
+.toggle-hotspots-btn:hover,
+.toggle-view-btn:hover {
   background-color: #003c8a;
 }
 
@@ -97,7 +99,7 @@
   border-radius: 4px;
   font-size: 12px;
   white-space: nowrap;
-  color: #004AAD;
+  color: #004aad;
   font-weight: bold;
   top: -25px;
   left: 50%;
@@ -127,7 +129,7 @@
 }
 
 .hotspot-dot::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
@@ -179,7 +181,7 @@
   visibility: hidden;
   transition: all 0.3s ease;
   pointer-events: auto;
-  border-left: 4px solid #004AAD;
+  border-left: 4px solid #004aad;
 }
 
 .hotspot-tooltip.show {
@@ -188,8 +190,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(10px); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 
 /* Position tooltips based on hotspot location */
@@ -209,7 +217,7 @@
 
 .hotspot-tooltip h3 {
   margin: 0 0 5px;
-  color: #004AAD;
+  color: #004aad;
   font-size: 16px;
   font-weight: 600;
 }
@@ -224,7 +232,7 @@
 .view-parts {
   display: inline-block;
   margin-top: 10px;
-  color: #004AAD;
+  color: #004aad;
   font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
@@ -329,7 +337,7 @@
 }
 
 .zoom-details h2 {
-  color: #004AAD;
+  color: #004aad;
   font-size: 24px;
   margin-bottom: 15px;
   text-align: left;
@@ -407,7 +415,7 @@
 }
 
 .zoom-view-product-btn {
-  background-color: #004AAD;
+  background-color: #004aad;
   color: white;
   border: none;
   padding: 12px;
@@ -489,7 +497,7 @@
 
 .quick-view-btn {
   background-color: white;
-  color: #004AAD;
+  color: #004aad;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -520,7 +528,7 @@
 
 .product-name {
   font-size: 16px;
-  color: #004AAD;
+  color: #004aad;
   margin: 0 0 5px 0;
 }
 

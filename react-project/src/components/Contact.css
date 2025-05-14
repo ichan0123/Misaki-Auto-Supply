@@ -13,9 +13,8 @@
 
 .contact-title {
   font-size: 2.5rem;
-  color: #004AAD;
+  color: #004aad;
   margin-left: auto;
-  margin-right: 180px;
   flex-grow: 1;
   font-weight: bold;
   text-align: center;
@@ -87,7 +86,7 @@
 }
 
 .contact-info-item i {
-  color: #004AAD;
+  color: #004aad;
   font-size: 1.2rem;
   width: 24px;
 }
@@ -130,4 +129,4 @@
   .map-container iframe {
     height: 350px;
   }
-} 
+}

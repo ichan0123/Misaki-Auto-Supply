@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../components/AdminDashboard.css';
+import './AdminCustomers.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faPhone, faCalendarAlt, faShoppingCart, faDollarSign, faCheckCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const AdminCustomers = () => {
   const [customers, setCustomers] = useState([
@@ -111,19 +114,49 @@ const AdminCustomers = () => {
     return (
       <div className="customer-details">
         <div className="customer-info">
-          <p><strong>ID:</strong> {customer.id}</p>
-          <p><strong>Name:</strong> {customer.name}</p>
-          <p><strong>Email:</strong> {customer.email}</p>
-          <p><strong>Phone:</strong> {customer.phone}</p>
-          <p><strong>Join Date:</strong> {customer.joinDate}</p>
-          <p><strong>Status:</strong> {customer.status.charAt(0).toUpperCase() + customer.status.slice(1)}</p>
+          <h4>Customer Information</h4>
+          <p>
+            <strong><FontAwesomeIcon icon={faUser} /> ID:</strong> 
+            {customer.id}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faUser} /> Name:</strong> 
+            {customer.name}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faEnvelope} /> Email:</strong> 
+            {customer.email}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faPhone} /> Phone:</strong> 
+            {customer.phone}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faCalendarAlt} /> Join Date:</strong> 
+            {customer.joinDate}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={status === 'active' ? faCheckCircle : faTimes} /> Status:</strong> 
+            <span className={`status-badge ${customer.status}`}>
+              {customer.status.charAt(0).toUpperCase() + customer.status.slice(1)}
+            </span>
+          </p>
         </div>
         
         <div className="customer-stats">
           <h4>Customer Statistics</h4>
-          <p><strong>Total Orders:</strong> {customer.orders}</p>
-          <p><strong>Total Spent:</strong> ₱ {parseFloat(customer.totalSpent).toFixed(2)}</p>
-          <p><strong>Last Order:</strong> {customer.lastOrder || 'N/A'}</p>
+          <p>
+            <strong><FontAwesomeIcon icon={faShoppingCart} /> Total Orders:</strong> 
+            {customer.orders}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faDollarSign} /> Total Spent:</strong> 
+            ₱ {parseFloat(customer.totalSpent).toFixed(2)}
+          </p>
+          <p>
+            <strong><FontAwesomeIcon icon={faCalendarAlt} /> Last Order:</strong> 
+            {customer.lastOrder || 'N/A'}
+          </p>
         </div>
         
         <div className="status-update">
@@ -132,7 +165,10 @@ const AdminCustomers = () => {
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
-          <button className="update-status-button" onClick={handleUpdate}>Update</button>
+          <button className="update-status-button" onClick={handleUpdate}>
+            <FontAwesomeIcon icon={status === 'active' ? faCheckCircle : faTimes} /> 
+            Update Status
+          </button>
         </div>
         
         <div className="form-actions">
