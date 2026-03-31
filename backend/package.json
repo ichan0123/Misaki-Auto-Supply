@@ -1,0 +1,36 @@
+{
+  "name": "misaki-auto-supply-api",
+  "version": "1.0.0",
+  "description": "Backend API for Misaki Auto Supply",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "setup": "node scripts/setupDatabase.js",
+    "create-admin": "node scripts/createAdmin.js",
+    "sample-data": "node scripts/insertSampleData.js",
+    "generate-admin": "node scripts/generateAdminPassword.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "auto",
+    "supply",
+    "ecommerce",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
